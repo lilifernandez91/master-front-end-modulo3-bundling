@@ -1,16 +1,33 @@
-.container {
+@mixin flexCenter ($direction, $content, $align) {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
 
-    .image {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+$colorText : #c4c41d;
 
-        img {
+.container {
+    @include flexCenter(column, center, center);
+    height: 100vh;
+
+    .image-container {
+        @include flexCenter(column, center, center);
+
+        .image {
             width: 200px;
+            transition: transform 0.3s ease;
+            margin-bottom: 28px;
+            cursor: pointer;
+
+            &:hover {
+                transform: rotate(360deg);
+            }
+        }
+
+        .text {
+            font-size: 24px;
+            color: $colorText;
         }
     }
 }
